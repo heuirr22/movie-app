@@ -15,7 +15,7 @@ class App extends React.Component{
         data : { movies }
       }
     } = await axios.get("https://yts-proxy.nomadcoders1.now.sh/list_movies.json?sort_by=rating");
-    this.setState({movies, isLoading: false});
+    this.setState({ movies, isLoading: false });
   };
 
   componentDidMount() {
@@ -26,14 +26,14 @@ class App extends React.Component{
     const { isLoading, movies } = this.state;
     return (
       //html 정리
-      <section class = "container">
+      <section className = "container">
         {isLoading ? (
-          <div clsss = "loder">
-            <span class = "loder__text">Loading...</span>
+          <div clsssName = "loder">
+            <span className = "loder__text">Loading...</span>
           </div>
         ) : (
-          <div class = "movies">
-            { movies.map(movie => (
+          <div className = "movies">
+            {movies.map(movie => (
               <Movie
                 key={movie.id}
                 id={movie.id}
@@ -41,6 +41,7 @@ class App extends React.Component{
                 title={movie.title}
                 summary={movie.summary}
                 poster={movie.medium_cover_image}
+                genres={movie.genres}
               />
               ))}
           </div>
